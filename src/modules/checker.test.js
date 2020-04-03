@@ -92,6 +92,12 @@ describe('isBurgerValid', () => {
     ]
     expect(isBurgerValid(burger, true)).toBe(false)
   })
+
+  it('Not valid burger, nothing on it', () => {
+    const burger = [
+    ]
+    expect(isBurgerValid(burger)).toBe(false)
+  })
 })
 
 

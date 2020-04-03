@@ -135,6 +135,10 @@ const vegetarianRule = (burger) => {
 }
 
 export const isBurgerValid = (burger, vegetarian = false) => {
+
+  if (burger.length < 3)
+    return false;
+
   let hasVegetarian = true;
   if (vegetarian) {
     hasVegetarian = vegetarianRule(burger);
