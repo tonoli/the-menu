@@ -141,10 +141,11 @@ export const isBurgerValid = (burger, vegetarian = false) => {
   }
   const hasTopDown = topAndBottomIsBun(burger);
   const hasSameBunType = sameTypeOfBun(burger);
-  const hasCheeseRule =  cheeseRule(burger);
+  const hasCheeseRule =  vegetarian ? true : cheeseRule(burger);
   const hasLettuceRule = lettuceRule(burger);
   const hasBunDispositionRule = bunDispositionRule(burger);
   const hasIngredientDispositionRule = ingredientDispositionRule(burger);
+
   return hasTopDown
     && hasSameBunType
     && hasCheeseRule

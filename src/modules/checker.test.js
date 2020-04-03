@@ -14,6 +14,16 @@ describe('isBurgerValid', () => {
 
     expect(isBurgerValid(burger)).toBe(true)
   })
+  it('Valid vegi burger', () => {
+    const burger = [
+      { type: TYPES.BUN, item: CLASSIC_BUNS.CLASSIC_BUN_BOTTOM },
+      { type: TYPES.INGREDIENT, item: ITEMS.TOMATOES },
+      { type: TYPES.INGREDIENT, item: ITEMS.CHEESE },
+      { type: TYPES.INGREDIENT, item: ITEMS.LETTUCE },
+      { type: TYPES.BUN, item: CLASSIC_BUNS.CLASSIC_BUN_TOP }
+    ]
+    expect(isBurgerValid(burger, true)).toBe(true)
+  })
   it('Not valid burger, cause no bread', () => {
     const burger = [
       { type: TYPES.BUN, item: CLASSIC_BUNS.CLASSIC_BUN_BOTTOM },
