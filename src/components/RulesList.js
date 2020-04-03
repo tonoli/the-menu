@@ -7,6 +7,16 @@ import { StateContext } from '../App'
 import { Title3 } from './Title'
 import CheckIcon from './CheckIcon'
 
+import {
+  topAndBottomIsBun,
+  bunDispositionRule,
+  cheeseRule,
+  ingredientDispositionRule,
+  lettuceRule,
+  sameTypeOfBun,
+  vegetarianRule
+} from '../modules/checker'
+
 const Container = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -45,27 +55,27 @@ const RulesList = () => {
       <Title3>Golden rules of a burger</Title3>
       <List>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={topAndBottomIsBun(userBurger)} />
           Bun on top and bottom
         </ListItem>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={sameTypeOfBun(userBurger)} />
           Use the same type of bun
         </ListItem>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={cheeseRule(userBurger)} />
           The cheese should always be above the beef
         </ListItem>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={lettuceRule(userBurger)} />
           The lettuce should always be below a bun
         </ListItem>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={bunDispositionRule(userBurger)} />
           Never stack two buns on top of another
         </ListItem>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={ingredientDispositionRule(userBurger)} />
           Never use the same ingredient on top of another
         </ListItem>
       </List>
@@ -73,7 +83,7 @@ const RulesList = () => {
       <Title3>Optional rule</Title3>
       <List>
         <ListItem>
-          <CheckIcon checked={false} />
+          <CheckIcon checked={vegetarianRule(userBurger)} />
           Vegetarian (contains no beef or bacon)
         </ListItem>
       </List>

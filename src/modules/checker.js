@@ -19,7 +19,9 @@
 import { TYPES, INGREDIENTS, DARK_BUNS, CLASSIC_BUNS} from '../constants/burger'
 
 
-const topAndBottomIsBun = (burger) => {
+export const topAndBottomIsBun = (burger) => {
+  if (burger.length < 2)
+    return false;
   let hasTopBun = false;
   let hasDownBun = false;
   const downElement = burger[0];
@@ -43,7 +45,7 @@ const topAndBottomIsBun = (burger) => {
   return false;
 }
 
-const sameTypeOfBun = (burger) => {
+export const sameTypeOfBun = (burger) => {
   let typeOfBun = null;
 
   for (let i = 0; i < burger.length; i++) {
@@ -73,7 +75,7 @@ const sameTypeOfBun = (burger) => {
   return true;
 };
 
-const cheeseRule = (burger) => {
+export const cheeseRule = (burger) => {
   for (let i = 0; i < burger.length; i++) {
     if (burger[i].type === TYPES.INGREDIENT && burger[i].item ===  INGREDIENTS.CHEESE) {
       if (i === 0)
@@ -87,7 +89,7 @@ const cheeseRule = (burger) => {
   return true;
 }
 
-const lettuceRule = (burger) => {
+export const lettuceRule = (burger) => {
   for (let i = 0; i < burger.length - 1; i++) {
     if (burger[i].type === TYPES.INGREDIENT && burger[i].item ===  INGREDIENTS.LETTUCE) {
       let nextElement = burger[i + 1];
@@ -99,7 +101,7 @@ const lettuceRule = (burger) => {
   return true;
 }
 
-const bunDispositionRule = (burger) => {
+export const bunDispositionRule = (burger) => {
   for (let i = 0; i < burger.length; i++) {
     if (i !== 0 && burger[i].type === TYPES.BUN) {
       let previousElement = burger[i - 1];
@@ -111,7 +113,7 @@ const bunDispositionRule = (burger) => {
   return true;
 }
 
-const ingredientDispositionRule = (burger) => {
+export const ingredientDispositionRule = (burger) => {
   for (let i = 1; i < burger.length; i++) {
     if (burger[i].type === TYPES.INGREDIENT) {
       let previousElement = burger[i - 1];
@@ -124,7 +126,7 @@ const ingredientDispositionRule = (burger) => {
   return true;
 }
 
-const vegetarianRule = (burger) => {
+export const vegetarianRule = (burger) => {
   for (let i = 0; i < burger.length; i++) {
     if (burger[i].type === TYPES.INGREDIENT &&
       (burger[i].item === INGREDIENTS.BEEF || burger[i].item === INGREDIENTS.BACON)) {
